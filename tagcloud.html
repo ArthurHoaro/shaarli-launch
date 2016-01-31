@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}</head>
+<body>
+{include="hoaro"}
+<section role="main">
+  <article role="article" id="tagcloud">
+    <h1>Tag cloud</h1>
+
+    <div id="plugin_zone_start_tagcloud" class="plugin_zone">
+      {loop="$plugin_start_zone"}
+      {$value}
+      {/loop}
+    </div>
+
+    {loop="tags"}
+      <span class="count">{$value.count}</span>
+      <a href="?searchtags={$key|urlencode}" style="font-size:{$value.size}pt;">{$key}</a>
+    {/loop}
+
+    <div id="plugin_zone_end_tagcloud" class="plugin_zone">
+      {loop="$plugin_end_zone"}
+        {$value}
+      {/loop}
+    </div>
+  </article>
+</section>
+{include="page.footer"}
+</body>
+</html>

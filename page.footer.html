@@ -1,0 +1,87 @@
+<footer>
+  {if="isLoggedIn()"}
+  <p>
+    <a href="?do=tools" title="Tools">Tools</a> -
+    <a href="?do=logout" title="Logout">Logout</a>
+  </p>
+  {/if}
+  <p>Généré par <a href="https://github.com/shaarli/Shaarli" title="Shaarli">Shaarli</a> -
+    <a href="doc/Home.html" title="Documentation">Documentation</a> -
+    <a href="https://github.com/shaarli/templates" title="Shaarli's theme repository">Theme Launch</a> by
+    <a href="http://hoa.ro" title="hoa.ro">Arthur Hoaro</a>
+  </p>
+  {loop="$plugins_footer.text"}
+    {$value}
+  {/loop}
+</footer>
+
+{loop="$plugins_footer.endofpage"}
+  {$value}
+{/loop}
+
+{if="$newVersion"}
+  <div id="newversion">
+    <span style="text-decoration:blink;">&#x25CF;</span>
+    Shaarli {$newVersion} is <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli#download">available</a>.
+  </div>
+{/if}
+{if="$versionError"}
+  <div id="newversion">
+    Error: {$versionError}
+  </div>
+{/if}
+
+<script>
+  var lis = document.querySelectorAll('.liststatic li');
+  [].forEach.call(lis, function(li) {
+    li.addEventListener('mouseenter', function(event) {
+      toggleList(event.target);
+    });
+    li.addEventListener('mouseleave', function(event) {
+      toggleList(event.target);
+    });
+  });
+
+  var icons = document.querySelectorAll('#icons li a');
+  [].forEach.call(icons, function(icon) {
+    icon.addEventListener('mouseenter', function(event) {
+      toggleIcon(event.target);
+    });
+    icon.addEventListener('mouseleave', function(event) {
+      toggleIcon(event.target);
+    });
+  });
+
+  function toggleList(elem) {
+    var id = elem.id;
+    var item = document.querySelector('#icons a[li="'+ id +'"]');
+    item.parentNode.className = toggleHoveredClass(item.parentNode.className);
+    item.className = toggleHoveredClass(item.className);
+  }
+
+  function toggleIcon(elem) {
+    var id = elem.getAttribute('li');
+    var item = document.querySelector('.liststatic #'+ id +' a');
+    item.className = toggleHoveredClass(item.className);
+  }
+
+  function toggleHoveredClass(className) {
+    if (className.indexOf('hovered') > -1) {
+      return className.replace(' hovered', '');
+    }
+    return className + ' hovered';
+  }
+</script>
+
+{if="isLoggedIn()"}
+<script>
+  function confirmDeleteLink() {
+    return confirm("Are you sure you want to delete this link ?") != false;
+  }
+</script>
+{/if}
+</div>
+
+{loop="$plugins_footer.js_files"}
+  <script src="{$value}#"></script>
+{/loop}

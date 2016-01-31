@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body onload="document.addform.post.focus();">
+{if="empty($_GET['source']) || $_GET['source']!='bookmarklet'"}
+{include="hoaro"}
+{/if}
+<section role="main">
+  <article role="article" class="link-article" id="article">
+    <h1>Add link</h1>
+
+    <form method="GET" action="" name="addform" class="addform">
+      <input type="text" name="post">
+      <input type="submit" value="Add link" class="bigbutton">
+    </form>
+  </article>
+</section>
+{include="page.footer"}
+</body>
+</html>
