@@ -1,0 +1,67 @@
+<nav role="navigation">
+  <h1><a href="?">{$GLOBALS['title']}</a></h1>
+  <h2></h2>
+  <div class="separator"></div>
+
+  <form method="GET" name="searchform">
+    <input type="text" id="searchform" name="searchterm" value="">
+    <span class="switch" id="search-switch">
+      <span class="icon">&#128270;</span> &nbsp;<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+      <label for="cmn-toggle-7" data-off="Terms" data-on="Tags"></label>
+    </span>
+  </form>
+
+  <ul class="liststatic">
+    <li id="static-links">
+      <a href="?" class="noactive" title="Links">Links</a>
+    </li>
+    {if="!isLoggedIn()"}
+    <li id="static-login">
+      <a href="?do=login" class="noactive" title="Login">Login</a>
+    </li>
+    {/if}
+    {if="isLoggedIn()"}
+    <li id="static-shaare">
+      <a href="?do=addlink" class="noactive" title="Shaare">Shaare</a>
+    </li>
+    {/if}
+    <li id="static-tagcloud">
+      <a href="?do=tagcloud" class="noactive" title="Tag cloud">Tag cloud</a>
+    </li>
+    <li id="static-picwall">
+      <a href="?do=picwall" class="noactive" title="Picture wall">Picture wall</a>
+    </li>
+    <li id="static-daily">
+      <a href="?do=daily" class="noactive" title="Daily">Daily</a>
+    </li>
+  </ul>
+
+  <div id="rss-head-link"><a class="icon-entry rss-icon bright-icon" href="{$feedurl}?do=rss{$searchcrits}"></a></div>
+  <div id="icons">
+    <ul>
+      <li class="">
+        <a class="icon-entry home-icon bright-icon" title="Links" li="static-links" href="?"></a>
+      </li>
+      {if="!isLoggedIn()"}
+      <li class="">
+        <a class="icon-entry link-icon bright-icon" title="Login" li="static-login" href="?do=login"></a>
+      </li>
+      {/if}
+      {if="isLoggedIn()"}
+      <li class="">
+        <a class="icon-entry link-icon bright-icon" title="Logout" li="static-shaare" href="?do=addlink"></a>
+      </li>
+      {/if}
+      <li class="">
+        <a class="icon-entry cloud-icon bright-icon" title="Tag cloud" li="static-tagcloud" href="?do=tagcloud"></a>
+      </li>
+      <li class="">
+        <a class="icon-entry blog-icon bright-icon" title="Picture wall" li="static-picwall" href="?do=picwall"></a>
+      </li>
+      <li class="">
+        <a class="icon-entry wiki-icon bright-icon" title="Daily" li="static-daily" href="?do=daily"></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div id="content">

@@ -134,6 +134,14 @@ canvas {
     clear: both;
 }
 
+.i {
+    font-style: italic;
+}
+
+.b {
+    font-weight: bold;
+}
+
 /* ---------- HEADER ---------- */
 
 header {
@@ -167,7 +175,7 @@ nav {
 nav .liststatic {
     position: absolute;
     left: 0;
-    top: 175px;
+    top: 200px;
     margin: 0;
     padding: 0;
     width: 200px;
@@ -199,6 +207,7 @@ nav h1 {
     margin: 10px 0px 10px 30px;
     width: 150px;
     text-align: right;
+    overflow: hidden;
 }
 
 nav h1 a {
@@ -206,11 +215,11 @@ nav h1 a {
     color: #4882B1;
     font-weight: bold;
     text-align: right;
-    text-shadow: 1px 1px 1px #0d0d0d; 
+    text-shadow: 1px 1px 1px #0d0d0d;
 }
 
 nav h1 a:hover {
-    color: #4882B1;
+    color: #4577a3;
 }
 
 nav h2 {
@@ -232,7 +241,7 @@ nav h2 {
 /* ---------- ICONS ---------- */
 #icons {
     position: absolute;
-    top: 175px;
+    top: 200px;
     left: 200px;
     width: 61px;
     padding: 0;
@@ -504,7 +513,7 @@ article img {
     color: #ABB2BF;
     padding: 5px 5px 3px 25px;
     width: 140px;
-    margin: 0 0 20px 20px !important;
+    margin: 0 0 10px 20px !important;
     height: 20px !important;
 }
 
@@ -692,8 +701,13 @@ footer p {
 .link-editbuttons .buttoneditform input {
     margin: 0;padding: 0;
 }
+
 .linksperpage input[type=text] {
     width: 50px;
+}
+
+.link-icon {
+    font-size: 1.2em;
 }
 
 .link-paging {
@@ -709,9 +723,21 @@ footer p {
     margin-left: 10px;
 }
 
-/* Minimal customisation for jQuery widgets */
-.ui-autocomplete { background-color:#eee; border: 1px solid black; width: 500px;}
-.ui-menu-item { list-style-type: none; }
+.link-search-term-result {
+    font-style: italic;
+}
+
+.link-search-tag-result {
+    border-left:1px solid #aaa;
+    padding-left:5px;
+    color:#6767A7;
+    font-style: italic;
+}
+
+#searchcriteria {
+    margin: 0 0 10px 0;
+}
+
 
 #tagcloud {
     
@@ -1039,4 +1065,63 @@ div.dailyNoEntry {
     .wiki-icon.bright-icon:hover, .wiki-icon.bright-icon.hovered {
         background: url("../img/sprite.png") no-repeat transparent center -1208px;
     }
+}
+
+/* Switch */
+.cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+.cmn-toggle + label {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+input.cmn-toggle-yes-no + label {
+    padding: 2px;
+    width: 50px;
+    height: 15px;
+}
+input.cmn-toggle-yes-no + label:hover {
+    color: #fff;
+}
+input.cmn-toggle-yes-no + label:before,
+input.cmn-toggle-yes-no + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #DDD;
+    font-family: arial, serif;
+    font-size: 14px;
+    text-align: center;
+}
+input.cmn-toggle-yes-no + label:before {
+    content: attr(data-off);
+    transition: transform 0.5s;
+    backface-visibility: hidden;
+}
+input.cmn-toggle-yes-no + label:after {
+    content: attr(data-on);
+    transition: transform 0.5s;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+input.cmn-toggle-yes-no:checked + label:before {
+    transform: rotateY(180deg);
+}
+input.cmn-toggle-yes-no:checked + label:after {
+    transform: rotateY(0);
+}
+
+#search-switch {
+    margin: 0 0 0 20px;
+}
+#search-switch .icon {
+    color: #DDD;
 }
