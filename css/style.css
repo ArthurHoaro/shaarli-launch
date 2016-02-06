@@ -33,7 +33,7 @@ textarea {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     line-height: 1.1;
     margin-bottom: 15px;
 }
@@ -175,7 +175,7 @@ nav {
 nav .liststatic {
     position: absolute;
     left: 0;
-    top: 200px;
+    top: 160px;
     margin: 0;
     padding: 0;
     width: 200px;
@@ -241,7 +241,7 @@ nav h2 {
 /* ---------- ICONS ---------- */
 #icons {
     position: absolute;
-    top: 200px;
+    top: 160px;
     left: 200px;
     width: 61px;
     padding: 0;
@@ -413,7 +413,7 @@ article h1 a{
     margin-bottom: 10px;
     font-weight: bold;
     color: #555;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #979797;
 }
 
 article h2, article h3 {
@@ -502,19 +502,23 @@ article img {
 
 /* ---------- SEARCH ---------- */
 
-#searchform, .searchfield{ 
+#searchform, #tagfilter_value {
     background-image: url("../img/sprite.png");
     background-position: 5px -1365px;
     background-color: #202429;
     background-repeat: no-repeat;
     border: medium none currentColor;
     border-radius: 25px;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.078), 0px 1px 4px rgba(0, 0, 0, 0.298) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #ABB2BF;
     padding: 5px 5px 3px 25px;
     width: 140px;
     margin: 0 0 10px 20px !important;
     height: 20px !important;
+}
+
+#tagfilter_value, #search-submit, #search-switch {
+    display: none;
 }
 
 /* ---------- TAG ---------- */
@@ -719,8 +723,8 @@ footer p {
 }
 
 .link-thumbnail {
-    float:right;  
-    margin-left: 10px;
+    float:left;
+    margin: 15px 0 0 0;
 }
 
 .link-search-term-result {
@@ -734,10 +738,24 @@ footer p {
     font-style: italic;
 }
 
+.link-search-tag-result .remove-icon {
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
 #searchcriteria {
     margin: 0 0 10px 0;
 }
 
+.link-title-icon {
+    font-size: 0.5em;
+    vertical-align: middle;
+}
+
+.note-title-icon {
+    font-size: 0.8em;
+    vertical-align: middle;
+}
 
 #tagcloud {
     
@@ -1120,8 +1138,130 @@ input.cmn-toggle-yes-no:checked + label:after {
 }
 
 #search-switch {
-    margin: 0 0 0 20px;
+    margin: 5px 55px 0 0;
+    float:right;
 }
 #search-switch .icon {
     color: #DDD;
+}
+
+.sad404 {
+    font-size: 5em;
+}
+
+[hidden] { display: none; }
+
+.visually-hidden {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+div.awesomplete {
+    display: inline-block;
+    position: relative;
+}
+
+div.awesomplete > input {
+    display: block;
+}
+
+div.awesomplete > ul {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    min-width: 85%;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    border-radius: .3em;
+    margin: .2em 0 0 25px;
+    background: #FFF;
+    border: 1px solid rgba(0,0,0,.3);
+    box-shadow: .05em .2em .6em rgba(0,0,0,.2);
+    text-shadow: none;
+}
+
+div.awesomplete > ul[hidden],
+div.awesomplete > ul:empty {
+    display: none;
+}
+
+@supports (transform: scale(0)) {
+    div.awesomplete > ul {
+        transition: .3s cubic-bezier(.4,.2,.5,1.4);
+        transform-origin: 1.43em -.43em;
+    }
+
+    div.awesomplete > ul[hidden],
+    div.awesomplete > ul:empty {
+        opacity: 0;
+        transform: scale(0);
+        display: block;
+        transition-timing-function: ease;
+    }
+}
+
+/* Pointer */
+div.awesomplete > ul:before {
+    content: "";
+    position: absolute;
+    top: -.43em;
+    left: 1em;
+    width: 0; height: 0;
+    padding: .4em;
+    background: white;
+    border: inherit;
+    border-right: 0;
+    border-bottom: 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+div.awesomplete > ul > li {
+    position: relative;
+    padding: .2em .5em;
+    cursor: pointer;
+}
+
+div.awesomplete > ul > li:hover {
+    background: hsl(200, 40%, 80%);
+    color: black;
+}
+
+div.awesomplete > ul > li[aria-selected="true"] {
+    background: hsl(205, 40%, 40%);
+    color: white;
+}
+
+div.awesomplete mark {
+    background: hsl(65, 100%, 50%);
+}
+
+div.awesomplete li:hover mark {
+    background: hsl(68, 101%, 41%);
+}
+
+div.awesomplete li[aria-selected="true"] mark {
+    background: hsl(86, 102%, 21%);
+    color: inherit;
+}
+
+#linkform input[type="text"], #linkform textarea, #changetag input[type="text"] {
+    width: 100%;
+}
+
+#changetag input[type="text"], #configform input[type="text"] {
+    margin-bottom: 0 !important;
+}
+
+#configform label {
+    font-weight: normal;
+}
+
+#configform td {
+    padding: 0 0 10px 0;
+}
+
+#linkform textarea {
+    resize: vertical;
 }

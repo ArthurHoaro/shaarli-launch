@@ -2,25 +2,26 @@
 <html>
 <head>{include="includes"}</head>
 <body>
-{include="hoaro"}
+{include="launch"}
 <div class="daily">
   <div class="dailyTitle">
     The Daily Shaarli
   </div>
 
-  <div id="plugin_zone_start_picwall" class="plugin_zone">
-    {loop="$plugin_start_zone"}
-      {$value}
-    {/loop}
-  </div>
-
   <div class="dailyDate">
     <span class="nomobile">
       &#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;
-    </span> {function="strftime('%A %d, %B %Y', $day)"} <span class="nomobile">
+    </span> {function="strftime('%A %d %B %Y', $day)"} <span class="nomobile">
       &#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;&#x0097;
     </span>
   </div>
+
+  <div id="plugin_zone_start_picwall" class="plugin_zone">
+    {loop="$plugin_start_zone"}
+    {$value}
+    {/loop}
+  </div>
+
   <div class="dailyAbout">
     All links of one day in a single page.<br>
     {if="$previousday"} <a href="?do=daily&day={$previousday}"><b>&lt;</b>Previous day</a>{else}<b>&lt;</b>Previous
@@ -44,14 +45,16 @@
           {loop="value"}
             {$link=$value}
             <div class="dailyEntry">
-              <div class="dailyEntryPermalink">
-                <a href="?{$link.linkdate|smallHash}">
-                  <img src="../images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
-                </a>
-              </div>
+
               {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
                 <div class="dailyEntryLinkdate">
                   <a href="?{$link.linkdate|smallHash}">{function="strftime('%c', $link.timestamp)"}</a>
+                </div>
+              {else}
+                <div class="dailyEntryPermalink">
+                  <a href="?{$link.linkdate|smallHash}">
+                    <img src="../images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
+                  </a>
                 </div>
               {/if}
               {if="$link.tags"}

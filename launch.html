@@ -4,11 +4,25 @@
   <div class="separator"></div>
 
   <form method="GET" name="searchform">
-    <input type="text" id="searchform" name="searchterm" value="">
     <span class="switch" id="search-switch">
-      <span class="icon">&#128270;</span> &nbsp;<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-      <label for="cmn-toggle-7" data-off="Terms" data-on="Tags"></label>
+      <span class="icon">&#128270;</span> &nbsp;
+      <input id="toggle-search" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+      <label id="toggle-search-label" for="toggle-search" data-off="Terms" data-on="Tags"></label>
     </span>
+    <input type="text" id="searchform" name="searchterm"
+       placeholder="Search text"
+       {if="!empty($search_crits) && $search_type=='fulltext'"}
+         value="{$search_crits}"
+       {/if}>
+    <input type="text" name="searchtags" id="tagfilter_value"
+      placeholder="Filter by tag" class="searchfield"
+      {if="!empty($search_crits) && $search_type=='tags'"}
+        value="{function="implode(' ', $search_crits)"}"
+    {/if}
+    autocomplete="off" class="awesomplete" data-multiple data-minChars="1"
+    data-list="{loop="$tags"}{$key}, {/loop}"
+    >
+    <input type="submit" id="search-submit">
   </form>
 
   <ul class="liststatic">

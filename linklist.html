@@ -25,37 +25,48 @@
         results for tags
         {loop="search_crits"}
           <span class="linktag" title="Remove tag">
-              <a href="?removetag={$value|htmlspecialchars}" class="link-search-tag-result">{$value|htmlspecialchars}
-                <span style="">x</span>
-              </a>
+            <a href="?removetag={function="urlencode($value)"}" class="link-search-tag-result">
+              {$value|htmlspecialchars}
+              <span class="remove-icon">&#9003;</span>
+            </a>
           </span>
         {/loop}
-    </div>
+      </div>
     {/if}
 
     {loop="links"}
       <article role="article" class="link-article">
-        <a title="{$value.linkdate|smallHash}" id="{$value.linkdate|smallHash}"></a>
+        <span id="{$value.shorturl}"></span>
 
-        <div class="link-thumbnail">{$value.url|thumbnail}</div>
+        <h1>
+          {if="strpos($value.url, $value.shorturl) === false"}
+              <span class="link-title-icon">
+                &#128279;
+              </span>
+          {else}
+              <span class="note-title-icon">
+                &#128453;
+              </span>
+          {/if}
+          <a href="{$value.real_url}">
+            {$value.title}
+          </a>
+        </h1>
+
         <div class="linkcontainer">
-          <h1>
-            &#128279;
-            <a href="{$redirector}{$value.url|htmlspecialchars}">
-              {$value.title|htmlspecialchars}
-            </a>
-          </h1>
-
           <div class="link-infos">
             {if="$value.private == 1"}
               <span class="link-icon">
-                  &#128273; &middot;
-              </span>
+                  &#128273;
+              </span> &middot;
             {/if}
             {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
               &#128337;
-              {$value.localdate|htmlspecialchars}
-              &middot; <a href="?{$value.linkdate|smallHash}" title="Permalink">permalink</a> &middot;
+              {function="strftime('%A %d %B %Y', $value.timestamp)"}
+              &middot;
+              {function="strftime('%H:%M', $value.timestamp)"}
+              &middot;
+              <a href="?{$value.linkdate|smallHash}" title="Permalink">permalink</a> &middot;
             {else}
               <span class="linkdate" title="Short link here">
                 <a href="?{$value.linkdate|smallHash}">permalink</a>
@@ -63,16 +74,14 @@
               </span>
             {/if}
 
-            <div style="position:relative;display:inline;">
-              <a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&amp;width=200&amp;height=200"
-                 {if="empty($GLOBALS['disablejquery'])"} onclick="return false;"{/if} class="qrcode">
-              <img src="images/qrcode.png#" width="13" height="13" title="QR-Code" alt="qrcode">
-              </a>
-            </div>
+            {loop="$value.link_plugin"}
+            <span>{$value}</span> &middot;
+            {/loop}
 
             {if="isLoggedIn()"}
             <div class="link-editbuttons">
-              <form method="GET" class="buttoneditform"><input type="hidden" name="edit_link" value="{$value.linkdate}">
+              <form method="GET" class="buttoneditform">
+                <input type="hidden" name="edit_link" value="{$value.linkdate}">
                 <input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
               </form>
               <form method="POST" class="buttoneditform">
@@ -86,20 +95,23 @@
             {/if}
           </div>
 
+          <div class="link-thumbnail">{$value.url|thumbnail}</div>
+
           <p>
             {if="$value.description"}
-            {$value.description}
+              {$value.description}
             {/if}
           </p>
 
           {if="$value.tags"}
-          <div class="link-taglist">
-            Mots clés :
+            <div class="link-taglist">
+              Tags &#8997;
             {$tagSize=count($value.taglist)}
             {loop="value.taglist"}
-                                      <span class="linktag" title="Search tag">
-                                          <a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a>{if="$tagSize - 1 != $key"},{/if}
-                                      </span>
+              <span class="linktag" title="Search tag">
+                <a href="?addtag={$value|urlencode}">{$value}</a>
+                {if="$tagSize - 1 != $counter"} &middot; {/if}
+              </span>
             {/loop}
           </div>
           {/if}
@@ -114,21 +126,6 @@
 </section>
 
 {include="page.footer"}
-
-{if="empty($GLOBALS['disablejquery'])"}
-<script>
-  $(document).ready(function () {
-    $('a.qrcode').click(function () {
-      hide_qrcode();
-      var link = $(this).attr('href');
-      $(this).after('<div class="qrcode" onclick="hide_qrcode();return false;"><img src="' + link + '#" width="200" height="200"><br>click to close</div>');
-    });
-  });
-  function hide_qrcode() {
-    $('div.qrcode').remove();
-  }
-</script>
-{/if}
 
 </body>
 </html>
