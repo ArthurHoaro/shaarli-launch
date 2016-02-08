@@ -1,10 +1,27 @@
-<footer>
-  {if="isLoggedIn()"}
-  <p>
-    <a href="?do=tools" title="Tools">Tools</a> -
+{if="isLoggedIn() || !empty($plugins_header.launch_horizontal)"}
+  <div id="adminmenu" class="center">
+    {if="!empty($plugins_header.launch_horizontal)"}
+    <a href="?" title="Links">&#8962; Links</a> &middot;
+    {if="!isLoggedIn()"}
+    <a href="?do=login" title="Login">&#128279; Login</a> &middot;
+    {/if}
+    {if="isLoggedIn()"}
+    <a title="Logout" href="?do=addlink">&#128279; Shaare</a> &middot;
+    {/if}
+    <a href="?do=tagcloud" title="Tag cloud">&#9729; Tag cloud</a> &middot;
+    <a href="?do=picwall" title="Picture wall">&#128449; Picture wall &middot;</a>
+    <a title="Daily" href="?do=daily">&#128457; Daily &middot;</a>
+    {/if}
+    {if="isLoggedIn()"}
+    <a href="?do=tools" title="Tools">&#128296; Tools</a>
+    &middot;
     <a href="?do=logout" title="Logout">Logout</a>
-  </p>
-  {/if}
+    {/if}
+  </div>
+{/if}
+
+<footer>
+
   <p>Généré par <a href="https://github.com/shaarli/Shaarli" title="Shaarli">Shaarli</a> -
     <a href="doc/Home.html" title="Documentation">Documentation</a> -
     <a href="https://github.com/shaarli/templates" title="Shaarli's theme repository">Theme Launch</a> by

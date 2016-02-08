@@ -28,9 +28,9 @@
              alt="Click to see only private links">
         {/if}
       </a>
+      {loop="$action_plugin"}
+        &middot; {$value}
+      {/loop}
     </div>
   {/if}
-  {loop="$action_plugin"}
-    {$value}
-  {/loop}
 </div>
