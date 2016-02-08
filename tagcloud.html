@@ -2,7 +2,7 @@
 <html>
 <head>{include="includes"}</head>
 <body>
-{include="hoaro"}
+{include="launch"}
 <section role="main">
   <article role="article" id="tagcloud">
     <h1>Tag cloud</h1>
@@ -15,7 +15,7 @@
 
     {loop="tags"}
       <span class="count">{$value.count}</span>
-      <a href="?searchtags={$key|urlencode}" style="font-size:{$value.size}pt;">{$key}</a>
+      <a href="?searchtags={$key|urlencode}" style="font-size:{$value.size+2}pt;">{$key}</a>
     {/loop}
 
     <div id="plugin_zone_end_tagcloud" class="plugin_zone">

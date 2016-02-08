@@ -86,19 +86,18 @@ strike {
     text-decoration: line-through;
 }
 
-code,
-pre,
-samp {
+pre {
     padding: 10px 15px;
     font-family: "Courier New", modern, monospace;
     background-color: #eee;
     border: 1px solid #ddd;
 }
 
-pre > code {
-    background: none;
-    border: none;
-    margin-left: -15px;
+p>code {
+    padding: 0 1px;
+    font-family: "Courier New", modern, monospace;
+    background-color: #eee;
+    border: 1px solid #ddd;
 }
 
 li {
@@ -132,6 +131,19 @@ canvas {
 
 .clear {
     clear: both;
+}
+
+.highlight {
+    background-color: #FFFF33;
+}
+
+.center {
+    text-align: center;
+}
+
+ul.errors {
+    color: red;
+    float: left;
 }
 
 .i {
@@ -1264,4 +1276,48 @@ div.awesomplete li[aria-selected="true"] mark {
 
 #linkform textarea {
     resize: vertical;
+}
+
+#pluginsadmin table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#pluginsadmin th, #pluginsadmin td {
+    border: 1px solid #AAB2BD;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+#pluginsadmin th {
+    font-weight: bold;
+}
+
+#pluginsadmin td, #pluginsadmin td input {
+    margin: 0;
+    line-height: 1em;
+}
+
+#pluginsadmin h2 {
+    margin: 10px 0 0 0;
+}
+
+#pluginsadmin .float_label {
+    padding: 5px;
+}
+
+#pluginsadmin .float_label label {
+    font-weight: normal;
+    font-family: "Courier new", arial, serif;
+}
+
+#pluginsadmin .float_input input {
+    width: 100%;
+    padding: 5px;
+    margin: 0 0 5px 0;
+    border: 1px solid #AAB2BD;
+}
+
+#pluginsadmin code {
+    padding: 6px;
 }
