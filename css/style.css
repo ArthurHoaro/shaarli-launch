@@ -1331,3 +1331,7 @@ div.awesomplete li[aria-selected="true"] mark {
     color: black;
     margin-bottom: 10px;
 }
+
+#launchsettings label {
+    font-weight: normal;
+}
