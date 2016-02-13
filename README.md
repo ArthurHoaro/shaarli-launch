@@ -1,8 +1,12 @@
 # Launch theme for Shaarli
 
-Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli) developed for my own use.
+Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli).
 
 [Live demo (frontend)](https://links.hoa.ro)
+
+Screenshot with the default menu:
+
+![screenshot](http://imgur.com/axH1TYk)
 
 ## Installation
 
