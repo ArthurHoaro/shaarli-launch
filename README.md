@@ -6,7 +6,7 @@ Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli).
 
 Screenshot with the default menu:
 
-![screenshot](http://imgur.com/axH1TYk)
+![screenshot](http://i.imgur.com/axH1TYk.png)
 
 ## Installation
 
