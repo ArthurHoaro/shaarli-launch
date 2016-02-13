@@ -9,7 +9,7 @@ Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli) developed fo
 To download this theme, [visit this page](https://github.com/ArthurHoaro/shaarli-launch) and choose the 
 most recent version matching the version of your Shaarli installation. Both use the same notation.
 
-Versions suffixed by `-patch.x` include some bugfix so take those preferentially if they exist for the version that fits your Shaarli installation.
+Versions are suffixed by `-x` to include some bugfix so take the higher number that fits your Shaarli installation.
 
 Put the `shaarli-launch` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
