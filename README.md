@@ -30,5 +30,5 @@ It's recommended to install the [launch-plugin](https://github.com/ArthurHoaro/l
 
 ## License 
 
-This theme is distributed under MIT License. See [Licence.md](https://github.com/ArthurHoaro/shaarli-launch/blob/master/LICENSE.md).
+This theme is distributed under MIT License. See [License](https://github.com/ArthurHoaro/shaarli-launch/blob/master/LICENSE.md).
 
