@@ -994,7 +994,7 @@ div.dailyNoEntry {
     }
 
     nav {
-        position: absolute;
+        /*position: absolute;*/
         left:-240px;
     }
 
@@ -1334,4 +1334,13 @@ div.awesomplete li[aria-selected="true"] mark {
 
 #launchsettings label {
     font-weight: normal;
+}
+
+#launchsettings input[type="text"] {
+    margin: 0 !important;
+}
+
+#launchsettings pre {
+    max-height: 250px;
+    overflow: scroll;
 }

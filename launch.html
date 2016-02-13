@@ -7,7 +7,7 @@
   </h2>
   <div class="separator"></div>
 
-  <form method="GET" name="searchform">
+  <form method="GET" name="searchform" class="nomobile">
     <span class="switch" id="search-switch">
       <span class="icon">&#128270;</span> &nbsp;
       <input id="toggle-search" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
@@ -30,55 +30,71 @@
   </form>
 
   <ul class="liststatic">
-    <li id="static-links">
-      <a href="?" class="noactive" title="Links">Links</a>
-    </li>
-    {if="!isLoggedIn()"}
-    <li id="static-login">
-      <a href="?do=login" class="noactive" title="Login">Login</a>
-    </li>
+    {if="empty($GLOBALS['plugins']['LAUNCH_OVERRIDE_VERTICAL']) || empty($GLOBALS['plugins']['LAUNCH_CUSTOM_MENU'])"}
+      <li id="static-links">
+        <a href="?" class="noactive" title="Links">Links</a>
+      </li>
+      {if="!isLoggedIn()"}
+      <li id="static-login">
+        <a href="?do=login" class="noactive" title="Login">Login</a>
+      </li>
+      {/if}
+      {if="isLoggedIn()"}
+      <li id="static-shaare">
+        <a href="?do=addlink" class="noactive" title="Shaare">Shaare</a>
+      </li>
+      {/if}
+      <li id="static-tagcloud">
+        <a href="?do=tagcloud" class="noactive" title="Tag cloud">Tag cloud</a>
+      </li>
+      <li id="static-picwall">
+        <a href="?do=picwall" class="noactive" title="Picture wall">Picture wall</a>
+      </li>
+      <li id="static-daily">
+        <a href="?do=daily" class="noactive" title="Daily">Daily</a>
+      </li>
+    {else}
+      {loop="plugins_header.launch_vertical"}
+          <li id="static-{$value.title}">
+            <a href="{$value.url}" class="noactive" title="{$value.title}">{$value.title}</a>
+          </li>
+      {/loop}
     {/if}
-    {if="isLoggedIn()"}
-    <li id="static-shaare">
-      <a href="?do=addlink" class="noactive" title="Shaare">Shaare</a>
-    </li>
-    {/if}
-    <li id="static-tagcloud">
-      <a href="?do=tagcloud" class="noactive" title="Tag cloud">Tag cloud</a>
-    </li>
-    <li id="static-picwall">
-      <a href="?do=picwall" class="noactive" title="Picture wall">Picture wall</a>
-    </li>
-    <li id="static-daily">
-      <a href="?do=daily" class="noactive" title="Daily">Daily</a>
-    </li>
   </ul>
 
   <div id="rss-head-link"><a class="icon-entry rss-icon bright-icon" href="{$feedurl}?do=rss{$searchcrits}"></a></div>
   <div id="icons">
     <ul>
-      <li class="">
-        <a class="icon-entry home-icon bright-icon" title="Links" li="static-links" href="?"></a>
-      </li>
-      {if="!isLoggedIn()"}
-      <li class="">
-        <a class="icon-entry link-icon bright-icon" title="Login" li="static-login" href="?do=login"></a>
-      </li>
+      {if="empty($GLOBALS['plugins']['LAUNCH_OVERRIDE_VERTICAL']) || empty($GLOBALS['plugins']['LAUNCH_CUSTOM_MENU'])"}
+        <li class="">
+          <a class="icon-entry home-icon bright-icon" title="Links" li="static-links" href="?"></a>
+        </li>
+        {if="!isLoggedIn()"}
+        <li class="">
+          <a class="icon-entry link-icon bright-icon" title="Login" li="static-login" href="?do=login"></a>
+        </li>
+        {/if}
+        {if="isLoggedIn()"}
+        <li class="">
+          <a class="icon-entry link-icon bright-icon" title="Logout" li="static-shaare" href="?do=addlink"></a>
+        </li>
+        {/if}
+        <li class="">
+          <a class="icon-entry cloud-icon bright-icon" title="Tag cloud" li="static-tagcloud" href="?do=tagcloud"></a>
+        </li>
+        <li class="">
+          <a class="icon-entry blog-icon bright-icon" title="Picture wall" li="static-picwall" href="?do=picwall"></a>
+        </li>
+        <li class="">
+          <a class="icon-entry wiki-icon bright-icon" title="Daily" li="static-daily" href="?do=daily"></a>
+        </li>
+      {else}
+        {loop="plugins_header.launch_vertical"}
+          <li>
+            <a class="icon-entry {$value.icon}-icon bright-icon" title="Daily" li="static-{$value.title}" href="{$value.url}"></a>
+          </li>
+        {/loop}
       {/if}
-      {if="isLoggedIn()"}
-      <li class="">
-        <a class="icon-entry link-icon bright-icon" title="Logout" li="static-shaare" href="?do=addlink"></a>
-      </li>
-      {/if}
-      <li class="">
-        <a class="icon-entry cloud-icon bright-icon" title="Tag cloud" li="static-tagcloud" href="?do=tagcloud"></a>
-      </li>
-      <li class="">
-        <a class="icon-entry blog-icon bright-icon" title="Picture wall" li="static-picwall" href="?do=picwall"></a>
-      </li>
-      <li class="">
-        <a class="icon-entry wiki-icon bright-icon" title="Daily" li="static-daily" href="?do=daily"></a>
-      </li>
     </ul>
   </div>
 </nav>
@@ -86,19 +102,19 @@
   {if="isLoggedIn() || !empty($plugins_header.launch_horizontal)"}
     <div id="adminmenu" class="center">
       {if="!empty($plugins_header.launch_horizontal)"}
-        <a href="?" title="Links">&#8962; Links</a> &middot;
+        <a href="?" title="Links">&#8962;&#8239;Links</a> &middot;
         {if="!isLoggedIn()"}
-          <a href="?do=login" title="Login">&#128279; Login</a> &middot;
+          <a href="?do=login" title="Login">&#128279;&#8239;Login</a> &middot;
         {/if}
         {if="isLoggedIn()"}
-            <a title="Logout" href="?do=addlink">&#128279; Shaare</a> &middot;
+            <a title="Logout" href="?do=addlink">&#128279;&#8239;Shaare</a> &middot;
         {/if}
-        <a href="?do=tagcloud" title="Tag cloud">&#9729; Tag cloud</a> &middot;
-        <a href="?do=picwall" title="Picture wall">&#128449; Picture wall &middot;</a>
-        <a title="Daily" href="?do=daily">&#128457; Daily &middot;</a>
+        <a href="?do=tagcloud" title="Tag cloud">&#9729;&#8239;Tag&#8239;cloud</a> &middot;
+        <a href="?do=picwall" title="Picture wall">&#128449;&#8239;Picture wall &middot;</a>
+        <a title="Daily" href="?do=daily">&#128457;&#8239;Daily &middot;</a>
       {/if}
       {if="isLoggedIn()"}
-          <a href="?do=tools" title="Tools">&#128296; Tools</a>
+          <a href="?do=tools" title="Tools">&#128296;&#8239;Tools</a>
            &middot;
           <a href="?do=logout" title="Logout">Logout</a>
       {/if}

@@ -1,14 +1,30 @@
-# WORK IN PROGRESS
+# Launch theme for Shaarli
 
-I'm improving this theme and updating it to the latest Shaarli's version. It's currently broken. Do not use.
+Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli) developed for my own use.
 
-# Hoaro theme for Shaarli
+[Live demo (frontend)](https://links.hoa.ro)
 
-This folder contains a set of custom theme and templates for [Shaarli](https://github.com/shaarli/Shaarli). It's based on [http://hoa.ro](http://hoa.ro) webdesign.
+## Installation
 
-![screenshot](https://github.com/shaarli/templates/blob/master/hoaro/screenshot.png)
+To download this theme, [visit this page](https://github.com/ArthurHoaro/shaarli-launch) and choose the 
+most recent version matching the version of your Shaarli installation. Both use the same notation.
 
-![screenshot](https://github.com/shaarli/templates/blob/master/hoaro/screenshot2.png)
+Versions suffixed by `-patch.x` include some bugfix so take those preferentially if they exist for the version that fits your Shaarli installation.
 
-This theme is distributed under MIT License.
+Put the `shaarli-launch` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
+
+In your Shaarli installation, open the `data/config.php` and change the `RAINTPL_TPL` parameter to `tpl/shaarli-launch/`.
+If you can't find this parameter, paste the following line at the end of the file:
+
+```php
+$GLOBALS['config']['RAINTPL_TPL'] = 'tpl/shaarli-launch/' ; // keep the trailing slash!
+```
+
+## Usage
+
+It's recommended to install the [launch-plugin](https://github.com/ArthurHoaro/launch-plugin) which lets you customize your theme (menus, subtitle, etc.).
+
+## License 
+
+This theme is distributed under MIT License. See [Licence.md](https://github.com/ArthurHoaro/shaarli-launch/blob/master/LICENSE.md).
 
