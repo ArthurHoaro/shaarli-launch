@@ -1278,6 +1278,19 @@ div.awesomplete li[aria-selected="true"] mark {
     resize: vertical;
 }
 
+#linkform .awesomplete {
+    display: block;
+}
+
+#linkform .awesomplete ul {
+    width: 100%;
+    margin: 0;
+}
+
+#linkform .lf_tags {
+    margin: 0 !important;
+}
+
 #pluginsadmin table {
     border-collapse: collapse;
     width: 100%;

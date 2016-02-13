@@ -32,8 +32,8 @@
       <textarea name="lf_description">{$link.description}</textarea><br>
 
       <span class="i">Tags</span><br>
-      <input type="text" id="lf_tags" name="lf_tags" value="{$link.tags}"
-             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off">
+      <input type="text" id="lf_tags" name="lf_tags" value="{$link.tags}" class="lf_tags"
+             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple2 autocomplete="off">
       <br>
 
       {loop="$edit_link_plugin"}
@@ -64,10 +64,9 @@
 {if="$source !== 'firefoxsocialapi'"}
   {include="page.footer"}
 {/if}
-<script src="inc/awesomplete.min.js#"></script>
-<script src="inc/awesomplete-multiple-tags.js#"></script>
+<script src="js/awesomplete.hack.js"></script>
 <script>
-  awesompleteUniqueTag('#lf_tags');
+  awesompleteUniqueTag2('#lf_tags');
 </script>
 </body>
 </html>
