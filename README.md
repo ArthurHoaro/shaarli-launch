@@ -20,7 +20,7 @@ If you can't find this parameter, paste the following line at the end of the fil
 $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/shaarli-launch/' ; // keep the trailing slash!
 ```
 
-## Usage
+## Launch Plugin
 
 It's recommended to install the [launch-plugin](https://github.com/ArthurHoaro/launch-plugin) which lets you customize your theme (menus, subtitle, etc.).
 
