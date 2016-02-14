@@ -1,5 +1,9 @@
 <nav role="navigation">
-  <h1><a href="?">{$GLOBALS['title']}</a></h1>
+  <h1>
+    <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}">
+      {$GLOBALS['title']}
+    </a>
+  </h1>
   <h2>
     {if="!empty($plugins_header.launch_subtitle)"}
       {$plugins_header.launch_subtitle}
