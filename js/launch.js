@@ -8,7 +8,7 @@ if (document.getElementById('tagfilter_value').value != '') {
 function switchSearch() {
     var searchtag = document.getElementById('tagfilter_value');
     var searchterm = document.getElementById('searchform');
-    var type = window.getComputedStyle(searchtag).getPropertyCSSValue('display').cssText == 'none';
+    var type = window.getComputedStyle(searchtag).getPropertyValue('display') == 'none';
     if (type) {
         searchtag.style.display = 'inline';
         searchtag.name = 'searchtags';
