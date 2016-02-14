@@ -759,12 +759,7 @@ footer p {
     margin: 0 0 10px 0;
 }
 
-.link-title-icon {
-    font-size: 0.5em;
-    vertical-align: middle;
-}
-
-.note-title-icon {
+.link-title-icon, .note-title-icon {
     font-size: 0.8em;
     vertical-align: middle;
 }

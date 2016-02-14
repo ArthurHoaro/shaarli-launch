@@ -40,12 +40,12 @@
 
         <h1>
           {if="strpos($value.url, $value.shorturl) === false"}
-              <span class="link-title-icon">
-                &#128279;
-              </span>
+            <span class="link-title-icon">
+              <i class="fa fa-link"></i>
+            </span>
           {else}
               <span class="note-title-icon">
-                &#128453;
+                <i class="fa fa-sticky-note"></i>
               </span>
           {/if}
           <a href="{$value.real_url}">
@@ -61,21 +61,20 @@
               </span> &middot;
             {/if}
             {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-              &#128337;
+              <i class="fa fa-clock-o"></i>
               {function="strftime('%A %d %B %Y', $value.timestamp)"}
               &middot;
               {function="strftime('%H:%M', $value.timestamp)"}
               &middot;
-              <a href="?{$value.linkdate|smallHash}" title="Permalink">permalink</a> &middot;
+              <a href="?{$value.linkdate|smallHash}" title="Permalink">permalink</a>
             {else}
               <span class="linkdate" title="Short link here">
                 <a href="?{$value.linkdate|smallHash}">permalink</a>
-                &middot;
               </span>
             {/if}
 
             {loop="$value.link_plugin"}
-            <span>{$value}</span> &middot;
+            &middot; <span>{$value}</span>
             {/loop}
 
             {if="isLoggedIn()"}
@@ -105,7 +104,7 @@
 
           {if="$value.tags"}
             <div class="link-taglist">
-              Tags &#8997;
+              <i class="fa fa-tags"></i>
             {$tagSize=count($value.taglist)}
             {loop="value.taglist"}
               <span class="linktag" title="Search tag">

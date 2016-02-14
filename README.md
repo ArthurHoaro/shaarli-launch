@@ -32,3 +32,4 @@ It's recommended to install the [launch-plugin](https://github.com/ArthurHoaro/l
 
 This theme is distributed under MIT License. See [License](https://github.com/ArthurHoaro/shaarli-launch/blob/master/LICENSE.md).
 
+It uses [http://fontawesome.io/](http://fontawesome.io/license/) under MIT License and SIL OFL 1.1.
