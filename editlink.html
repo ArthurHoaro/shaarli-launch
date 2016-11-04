@@ -41,7 +41,7 @@
       {/loop}
 
       <input type="checkbox"
-        {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+        {if="($link_is_new && $default_private_links) || $link.private == true"}
           checked="checked"
         {/if}
         name="lf_private" id="lf_private">

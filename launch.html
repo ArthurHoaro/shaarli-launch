@@ -1,8 +1,6 @@
 <nav role="navigation">
   <h1>
-    <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}">
-      {$GLOBALS['title']}
-    </a>
+    <a href="{$titleLink}">{$shaarlititle}</a>
   </h1>
   <h2>
     {if="!empty($plugins_header.launch_subtitle)"}
@@ -19,22 +17,25 @@
     </span>
     <input type="text" id="searchform" name="searchterm"
        placeholder="Search text"
-       {if="!empty($search_crits) && $search_type=='fulltext'"}
-         value="{$search_crits}"
+       {if="!empty($search_term)"}
+         value="{$search_term}"
        {/if}>
     <input type="text" name="searchtags" id="tagfilter_value"
       placeholder="Filter by tag" class="searchfield"
-      {if="!empty($search_crits) && $search_type=='tags'"}
-        value="{function="implode(' ', $search_crits)"}"
-    {/if}
+      {if="!empty($search_tags)"}
+        value="{$search_tags}"
+      {/if}
     autocomplete="off" class="awesomplete" data-multiple data-minChars="1"
     data-list="{loop="$tags"}{$key}, {/loop}"
     >
     <input type="submit" id="search-submit">
   </form>
 
+  {$launchOverride=$conf->get('plugins.LAUNCH_OVERRIDE_VERTICAL') ? $conf->get('plugins.LAUNCH_OVERRIDE_VERTICAL') : ''}
+  {$launchCustom=$conf->get('plugins.LAUNCH_CUSTOM_MENU') ? $conf->get('plugins.LAUNCH_CUSTOM_MENU') : ''}
+
   <ul class="liststatic">
-    {if="empty($GLOBALS['plugins']['LAUNCH_OVERRIDE_VERTICAL']) || empty($GLOBALS['plugins']['LAUNCH_CUSTOM_MENU'])"}
+    {if="empty($launchOverride) || empty($launchCustom)"}
       <li id="static-links">
         <a href="?" class="noactive" title="Links">Links</a>
       </li>
@@ -58,7 +59,7 @@
         <a href="?do=daily" class="noactive" title="Daily">Daily</a>
       </li>
     {else}
-      {loop="plugins_header.launch_vertical"}
+      {loop="$plugins_header.launch_vertical"}
           <li id="static-{$value.title}">
             <a href="{$value.url}" class="noactive" title="{$value.title}">{$value.title}</a>
           </li>
@@ -69,7 +70,7 @@
   <div id="rss-head-link"><a class="icon-entry rss-icon bright-icon" href="{$feedurl}?do=rss{$searchcrits}"></a></div>
   <div id="icons">
     <ul>
-      {if="empty($GLOBALS['plugins']['LAUNCH_OVERRIDE_VERTICAL']) || empty($GLOBALS['plugins']['LAUNCH_CUSTOM_MENU'])"}
+      {if="empty($launchOverride) || empty($launchCustom)"}
         <li class="">
           <a class="icon-entry home-icon bright-icon" title="Links" li="static-links" href="?"></a>
         </li>
@@ -93,7 +94,7 @@
           <a class="icon-entry wiki-icon bright-icon" title="Daily" li="static-daily" href="?do=daily"></a>
         </li>
       {else}
-        {loop="plugins_header.launch_vertical"}
+        {loop="$plugins_header.launch_vertical"}
           <li>
             <a class="icon-entry {$value.icon}-icon bright-icon" title="Daily" li="static-{$value.title}" href="{$value.url}"></a>
           </li>
@@ -106,16 +107,16 @@
   {if="isLoggedIn() || !empty($plugins_header.launch_horizontal)"}
   <div id="adminmenu" class="center">
     {if="!empty($plugins_header.launch_horizontal)"}
-    <a href="?" title="Links"><i class="fa fa-home"></i>&#8239;Links</a> &middot;
-    {if="isLoggedIn()"}
-    <a title="Logout" href="?do=addlink"><i class="fa fa-pencil-square-o"></i>&#8239;Shaare</a> &middot;
-    {/if}
-    <a href="?do=tagcloud" title="Tag cloud"><i class="fa fa-tags"></i>&#8239;Tag Cloud</a> &middot;
-    <a href="?do=picwall" title="Picture wall"><i class="fa fa-picture-o"></i>&#8239;Picture Wall &middot;</a>
-    <a title="Daily" href="?do=daily"><i class="fa fa-newspaper-o"></i>&#8239;Daily &middot;</a>
-    {if="!isLoggedIn()"}
-    <a href="?do=login" title="Login"><i class="fa fa-sign-in"></i>&#8239;Login</a>
-    {/if}
+      <a href="?" title="Links"><i class="fa fa-home"></i>&#8239;Links</a> &middot;
+      {if="isLoggedIn()"}
+        <a title="Logout" href="?do=addlink"><i class="fa fa-pencil-square-o"></i>&#8239;Shaare</a> &middot;
+        {/if}
+        <a href="?do=tagcloud" title="Tag cloud"><i class="fa fa-tags"></i>&#8239;Tag Cloud</a> &middot;
+        <a href="?do=picwall" title="Picture wall"><i class="fa fa-picture-o"></i>&#8239;Picture Wall &middot;</a>
+        <a title="Daily" href="?do=daily"><i class="fa fa-newspaper-o"></i>&#8239;Daily &middot;</a>
+        {if="!isLoggedIn()"}
+        <a href="?do=login" title="Login"><i class="fa fa-sign-in"></i>&#8239;Login</a>
+      {/if}
     {/if}
     {if="isLoggedIn()"}
     <a href="?do=tools" title="Tools"><i class="fa fa-wrench"></i>&#8239;Tools</a>

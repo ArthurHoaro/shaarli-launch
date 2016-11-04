@@ -39,7 +39,7 @@
           </td>
           <td>
             <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection"
-                     {if="!empty($GLOBALS['disablesessionprotection'])"}checked{/if}>
+                   {if="$session_protection_disabled"}checked{/if}>
             <label for="disablesessionprotection">
               &nbsp;Disable session cookie hijacking protection (Check this if you get
               disconnected often or if your IP address changes often.)
@@ -53,7 +53,7 @@
           </td>
           <td>
             <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault"
-                   {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if}/>
+                   {if="$private_links_default"}checked{/if}/>
             <label for="privateLinkByDefault">
               &nbsp;All new link are private by default
             </label>
@@ -66,7 +66,7 @@
           </td>
           <td>
             <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks"
-                   {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>
+                   {if="$enable_rss_permalinks"}checked{/if}/>
             <label for="enableRssPermalinks">
               &nbsp;Switches the RSS feed URLs between full URLs and shortlinks. Enabling it will show a permalink in the description, and the feed item will be linked to the absolute URL. Disabling it swaps this behaviour around (permalink in title and link in description).
             </label>
@@ -79,7 +79,7 @@
           </td>
           <td>
             <input type="checkbox" name="hidePublicLinks" id="hidePublicLinks"
-                   {if="!empty($GLOBALS['config']['HIDE_PUBLIC_LINKS'])"}checked{/if}/>
+                   {if="$hide_public_links"}checked{/if}/>
             <label for="hidePublicLinks">
               &nbsp;Do not show any links if the user is not logged in.
             </label>
@@ -92,7 +92,7 @@
           </td>
           <td>
             <input type="checkbox" name="updateCheck" id="updateCheck"
-                   {if="!empty($GLOBALS['config']['ENABLE_UPDATECHECK'])"}checked{/if}/>
+                   {if="$enable_update_check"}checked{/if}/>
             <label for="updateCheck">
               &nbsp;Notify me when a new release is ready
             </label>

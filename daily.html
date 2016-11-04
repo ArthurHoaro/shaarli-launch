@@ -39,14 +39,14 @@
   <div class="clear"></div>
 
   {if="$linksToDisplay"}
-    {loop="cols"}
+    {loop="$cols"}
       {if="isset($value[0])"}
         <div id="daily_col{$counter+1}">
-          {loop="value"}
+          {loop="$value"}
             {$link=$value}
             <div class="dailyEntry">
 
-              {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+              {if="!$hide_timestamps || isLoggedIn()"}
                 <div class="dailyEntryLinkdate">
                   <a href="?{$link.linkdate|smallHash}">{function="strftime('%c', $link.timestamp)"}</a>
                 </div>
@@ -59,7 +59,7 @@
               {/if}
               {if="$link.tags"}
                 <div class="dailyEntryTags">
-                  {loop="link.taglist"}
+                  {loop="$link.taglist"}
                   {$value} -
                   {/loop}
                 </div>

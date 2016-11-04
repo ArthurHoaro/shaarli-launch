@@ -18,7 +18,7 @@
       </a>
     </p>
 
-    {if="!$GLOBALS['config']['OPEN_SHAARLI']"}
+    {if="!$openshaarli"}
       <p>
         <a href="?do=changepasswd" class="b">Change password</a>
       </p>
@@ -103,7 +103,7 @@
       icon32URL: baseURL + "/img/favicon.ico",
       icon64URL: baseURL + "/img/favicon.ico",
 
-      shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
+      shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{text}&source=firefoxsocialapi{/noparse}",
       homepageURL: baseURL
     };
     node.setAttribute("data-service", JSON.stringify(data));

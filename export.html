@@ -5,22 +5,46 @@
 {include="launch"}
 <section role="main">
   <article role="article" class="link-article" id="article">
-    <h1>Export</h1>
-    <p>
-      <a href="?do=export&what=all">
-        <span class="b">Export all</span>: Export all links
-      </a>
-    </p>
-    <p>
-      <a href="?do=export&what=public">
-        <span class="b">Export public</span>: Export public links only
-      </a>
-    </p>
-    <p>
-      <a href="?do=export&what=private">
-        <span class="b">Export private</span>: Export private links only
-      </a>
-    </p>
+    <form method="GET">
+<!--      <h1>Export</h1>
+      <p>
+        <a href="?do=export&amp;selection=all">
+          <span class="b">Export all</span>: Export all links
+        </a>
+      </p>
+      <p>
+        <a href="?do=export&amp;selection=public">
+          <span class="b">Export public</span>: Only export public links
+        </a>
+      </p>
+      <p>
+        <a href="?do=export&amp;selection=private">
+          <span class="b">Export private</span>: Only export private links
+        </a>
+      </p>-->
+
+      <h1>Export</h1>
+
+      <input type="hidden" name="do" value="export">
+      <p>
+        <label>Selection</label><br>
+        <input type="radio" name="selection" value="all" checked="true"> All<br>
+        <input type="radio" name="selection" value="private"> Private<br>
+        <input type="radio" name="selection" value="public"> Public
+      </p>
+
+      <p>
+      <input type="checkbox" name="prepend_note_url" id="prepend_note_url">
+      <label for="prepend_note_url">
+        Prepend note permalinks with this Shaarli instance's URL
+        <em>(useful to import bookmarks in a web browser)</em>
+      </label>
+      </p>
+
+      <p>
+        <input class="bigbutton" type="submit" value="Export">
+      </p>
+    </form>
   </article>
 </section>
 

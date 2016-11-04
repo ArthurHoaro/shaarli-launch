@@ -9,31 +9,30 @@
 <section role="main">
   <div id="article">
 
-    {if="$search_type=='fulltext'"}
+    {if="count($links)==0"}
+      <div id="searchcriteria">Nothing found.</div>
+    {elseif="!empty($search_term) or !empty($search_tags)"}
       <div id="searchcriteria">
-        &#128270;
         <span class="b">{$result_count}</span>
-        results for
-        <span class="i">{$search_crits}</span>
-      </div>
-    {/if}
-    {if="$search_type=='tags'"}
-      <div id="searchcriteria">
-        &#128270;
-        <span class="b">{$result_count}</span>
-        results for tags
-        {loop="search_crits"}
-          <span class="linktag" title="Remove tag">
-            <a href="?removetag={function="urlencode($value)"}" class="link-search-tag-result">
-              {$value|htmlspecialchars}
-              <span class="remove-icon">&#9003;</span>
-            </a>
-          </span>
-        {/loop}
+        results
+        {if="!empty($search_term)"}
+          for <span class="i">{$search_term}</span>
+        {/if}
+        {if="!empty($search_tags)"}
+          {$exploded_tags=explode(' ', $search_tags)}
+          tagged
+          {loop="$exploded_tags"}
+            <span class="linktag" title="Remove tag">
+              <a href="?removetag={function="urlencode($value)"}">
+                {$value} <span class="remove-icon">&#9003;</span>
+              </a>
+            </span>
+          {/loop}
+        {/if}
       </div>
     {/if}
 
-    {loop="links"}
+    {loop="$links"}
       <article role="article" class="link-article">
         <span id="{$value.shorturl}"></span>
 
@@ -59,11 +58,15 @@
                   &#128273;
               </span> &middot;
             {/if}
-            {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+            {if="!$hide_timestamps || isLoggedIn()"}
+              {$updated=$value.updated_timestamp ? 'Edited: '. strftime('%c', $value.updated_timestamp) : 'Permalink'}
               <i class="fa fa-clock-o"></i>
-              {function="strftime('%A %d %B %Y', $value.timestamp)"}
-              &middot;
-              {function="strftime('%H:%M', $value.timestamp)"}
+              <span title="{$updated}">
+                {function="strftime('%A %d %B %Y', $value.timestamp)"}
+                &middot;
+                {function="strftime('%H:%M', $value.timestamp)"}
+                {if="$value.updated_timestamp"}*{/if}
+              </span>
               &middot;
               <a href="?{$value.linkdate|smallHash}" title="Permalink">permalink</a>
             {else}
@@ -105,7 +108,7 @@
             <div class="link-taglist">
               <i class="fa fa-tags"></i>
             {$tagSize=count($value.taglist)}
-            {loop="value.taglist"}
+            {loop="$value.taglist"}
               <span class="linktag" title="Search tag">
                 <a href="?addtag={$value|urlencode}">{$value}</a>
                 {if="$tagSize - 1 != $counter"} &middot; {/if}

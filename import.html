@@ -13,7 +13,7 @@
     </p>
 
     <form method="POST" action="?do=upload" enctype="multipart/form-data" name="uploadform" id="uploadform">
-      <input type="hidden" name="token" value="{$token}">
+      <!--<input type="hidden" name="token" value="{$token}">
       <input type="file" name="filetoupload" size="80"><br>
       <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}">
       <input type="checkbox" name="private" id="private">
@@ -21,7 +21,33 @@
       <input type="checkbox" name="overwrite" id="overwrite">
       <label for="overwrite">&nbsp;Overwrite existing links</label>
       <br><br>
-      <input type="submit" name="import_file" value="Import" class="bigbutton"><br>
+      <input type="submit" name="import_file" value="Import" class="bigbutton"><br>-->
+
+      <p>
+        <input type="hidden" name="token" value="{$token}">
+        <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}">
+        <input type="file" name="filetoupload">
+        <input type="submit" name="import_file" value="Import" class="bigbutton">
+      </p>
+
+      <p>
+        <label for="privacy">&nbsp;Visibility:</label><br>
+        <input type="radio" name="privacy" value="default" checked="true">
+        &nbsp;Use values from the imported file, default to public<br>
+        <input type="radio" name="privacy" value="private">
+        &nbsp;Import all bookmarks as private<br>
+        <input type="radio" name="privacy" value="public">
+        &nbsp;Import all bookmarks as public
+      </p>
+
+      <p>
+        <input type="checkbox" name="overwrite" id="overwrite">
+        <label for="overwrite">&nbsp;Overwrite existing bookmarks</label>
+      </p>
+      <p>
+        <label for="default_tags">&nbsp;Add default tags</label>
+        <input type="text" name="default_tags" id="default_tags">
+      </p>
     </form>
   </article>
 </section>

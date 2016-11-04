@@ -1,9 +1,11 @@
-document.getElementById('search-switch').style.display = 'inline';
-document.getElementById('toggle-search-label').addEventListener('click', switchSearch);
-if (document.getElementById('tagfilter_value').value != '') {
-    switchSearch();
-    document.getElementById('toggle-search').checked = 'checked';
-}
+(function (window, document) {
+    document.getElementById('search-switch').style.display = 'inline';
+    document.getElementById('toggle-search-label').addEventListener('click', switchSearch);
+    if (document.getElementById('tagfilter_value').value != '') {
+        switchSearch();
+        document.getElementById('toggle-search').checked = 'checked';
+    }
+})(this, this.document);
 
 function switchSearch() {
     var searchtag = document.getElementById('tagfilter_value');

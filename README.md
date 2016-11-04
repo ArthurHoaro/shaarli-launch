@@ -17,11 +17,15 @@ Versions are suffixed by `-x` to include some bugfix so take the higher number t
 
 Put the `shaarli-launch` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
-In your Shaarli installation, open the `data/config.php` and change the `RAINTPL_TPL` parameter to `tpl/shaarli-launch/`.
-If you can't find this parameter, paste the following line at the end of the file:
+In your Shaarli installation, open the `data/config.json.php` and change the `raintpl_tpl` parameter to `tpl/shaarli-launch/`.
 
-```php
-$GLOBALS['config']['RAINTPL_TPL'] = 'tpl/shaarli-launch/' ; // keep the trailing slash!
+```json
+{
+    "resource": {
+        "raintpl_tpl": "tpl\/shaarli-launch/",
+        [...]
+    }
+}
 ```
 
 ## Launch Plugin
