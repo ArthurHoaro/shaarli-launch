@@ -71,12 +71,14 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;Then click "✚ Shaare Note" button anytime to start composing a private Note (text post) in your Shaarli.
       </a>
     </p>
+    {if="$sslenabled"}
     <p>
       <a class="smallbutton" onclick="activateFirefoxSocial(this)">
         <span class="b">✚Add to Firefox social</span>
         &#x21D0; This works as a Firefox Extension to Shaare new link here.
       </a>
     </p>
+    {/if}
 
     {loop="$tools_plugin"}
       <p>
@@ -88,29 +90,31 @@
 
 {include="page.footer"}
 <script>
-  function activateFirefoxSocial(node) {
-    var loc = location.href;
-    var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+  {if="$sslenabled"}
+    function activateFirefoxSocial(node) {
+      var loc = location.href;
+      var baseURL = loc.substring(0, loc.lastIndexOf("/"));
 
-    // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
-    var data = {
-      name: "{$shaarlititle}",
-      description: "The personal, minimalist, super-fast, no-database delicious clone.",
-      author: "Shaarli",
-      version: "1.0.0",
+      // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
+      var data = {
+        name: "{$shaarlititle}",
+        description: "The personal, minimalist, super-fast, no-database delicious clone.",
+        author: "Shaarli",
+        version: "1.0.0",
 
-      iconURL: baseURL + "/img/favicon.ico",
-      icon32URL: baseURL + "/img/favicon.ico",
-      icon64URL: baseURL + "/img/favicon.ico",
+        iconURL: baseURL + "/img/favicon.ico",
+        icon32URL: baseURL + "/img/favicon.ico",
+        icon64URL: baseURL + "/img/favicon.ico",
 
-      shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{text}&source=firefoxsocialapi{/noparse}",
-      homepageURL: baseURL
-    };
-    node.setAttribute("data-service", JSON.stringify(data));
+        shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{text}&source=firefoxsocialapi{/noparse}",
+        homepageURL: baseURL
+      };
+      node.setAttribute("data-service", JSON.stringify(data));
 
-    var activate = new CustomEvent("ActivateSocialFeature");
-    node.dispatchEvent(activate);
-  }
+      var activate = new CustomEvent("ActivateSocialFeature");
+      node.dispatchEvent(activate);
+    }
+  {/if}
 
   function alertBookmarklet() {
     alert('Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link...');

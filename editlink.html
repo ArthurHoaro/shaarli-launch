@@ -13,6 +13,8 @@
 {/if}>
 {if="$source!='bookmarklet' || $source!='firefoxsocialapi'"}
   {include="launch"}
+{else}
+  <div id="shaarli_title"><a href="{$titleLink}">{$shaarlititle}</a></div>
 {/if}
 
 <section role="main">
@@ -21,6 +23,9 @@
 
     <form method="post" name="linkform" id="linkform">
       <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
+      {if="isset($link.id)"}
+        <input type="hidden" name="lf_id" value="{$link.id}">
+      {/if}
 
       <span class="i">URL</span><br>
       <input type="text" name="lf_url" value="{$link.url}"><br>

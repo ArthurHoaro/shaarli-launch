@@ -48,11 +48,11 @@
 
               {if="!$hide_timestamps || isLoggedIn()"}
                 <div class="dailyEntryLinkdate">
-                  <a href="?{$link.linkdate|smallHash}">{function="strftime('%c', $link.timestamp)"}</a>
+                  <a href="?{$link.shorturl}">{function="strftime('%c', $link.timestamp)"}</a>
                 </div>
               {else}
                 <div class="dailyEntryPermalink">
-                  <a href="?{$link.linkdate|smallHash}">
+                  <a href="?{$link.shorturl}">
                     <img src="../images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
                   </a>
                 </div>

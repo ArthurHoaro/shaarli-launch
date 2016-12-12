@@ -29,7 +29,12 @@
         {/if}
       </a>
       {loop="$action_plugin"}
-        &middot; {$value}
+        &middot; <a
+          {loop="$value.attr"}
+            {$key}="{$value}"
+          {/loop}>
+          {$value.html}
+        </a>
       {/loop}
     </div>
   {/if}
