@@ -1,4 +1,5 @@
-awesomplete2 = new Awesomplete($('input[data-multiple2]'), {
+var awp = Awesomplete.$;
+awesomplete2 = new Awesomplete(awp('input[data-multiple2]'), {
     filter: function(text, input) {
         return Awesomplete.FILTER_CONTAINS(text, input.match(/[^ ]*$/)[0]);
     },
