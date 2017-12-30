@@ -378,7 +378,7 @@ nav h2 {
 #content {
     margin: 0;
     margin-left: 340px;
-    width: 100%;
+    width: 890px;
 }
 
 /* ---------- SECTION ---------- */
@@ -408,7 +408,7 @@ section #page-title:first-letter {
 
 #article,
 #static {
-    width:100%;
+/*    width:100%; */
 }
 
 #article {
@@ -1331,7 +1331,7 @@ div.awesomplete li[aria-selected="true"] mark {
 }
 
 #adminmenu {
-    width: 100%;
+    float: right;
     margin: 20px 0 0 0;
 }
 
@@ -1367,3 +1367,18 @@ div.awesomplete li[aria-selected="true"] mark {
 #continent {
     width: 195px;
 }
+button {
+    border-radius: 4px;
+    padding: 5px 8px;
+    width: 120px;
+    background-color: #444;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    color: #white;
+    background-color: #20262c;
+}
+
