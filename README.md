@@ -1,4 +1,4 @@
-** Not completely working with Shaarli v0.9.x**
+__Not completely working with Shaarli v0.9.x__
 
 # Launch theme for Shaarli
 
