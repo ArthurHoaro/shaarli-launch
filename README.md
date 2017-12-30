@@ -1,3 +1,5 @@
+** Not completely working with Shaarli v0.9.x**
+
 # Launch theme for Shaarli
 
 Launch is a theme for [Shaarli](https://github.com/shaarli/Shaarli).
