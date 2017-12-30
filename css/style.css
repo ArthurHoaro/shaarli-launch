@@ -63,7 +63,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: #db2020;
+    color: #4882B1;
 }
 
 strong,
@@ -486,7 +486,7 @@ article img {
 
 .com-alert {
     font-weight: bold;
-    color: #db2020;
+    color: #4882B1;
 }
 
 /* ---------- PAGING ---------- */
@@ -1351,4 +1351,19 @@ div.awesomplete li[aria-selected="true"] mark {
 #launchsettings pre {
     max-height: 250px;
     overflow: scroll;
+}
+#theme,#city,#continent{
+    height: 30px;
+    line-height: 1.3em;
+    padding: 0 6px;
+    border: 1px solid #bbb;
+}
+#theme {
+    width: 395px;
+}
+#city {
+    width: 195px;
+}
+#continent {
+    width: 195px;
 }

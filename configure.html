@@ -21,10 +21,44 @@
           <td><input type="text" name="titleLink" id="titleLink" size="50" value="{$titleLink}"></td>
         </tr>
 
-        <tr>
-          <td valign="top"><b>Timezone</b></td>
-          <td valign="top">{$timezone_form}</td>
-        </tr>
+	<tr>
+          <td>
+	    <b>{'Theme'|t}</b>
+	  </td>
+	  <td>
+            <select name="theme" id="theme" class="align">
+              {loop="$theme_available"}
+                <option value="{$value}"{if="$value===$theme"} selected="selected" {/if}>{$value|ucfirst}</option>
+              {/loop}
+            </select>
+          </td>
+	</tr>	
+
+	<tr>
+	    <td><b>Timezone</b></td>
+            <td>
+              <select id="continent" name="continent">
+                {loop="$continents"}
+                  {if="$key !== 'selected'"}
+                    <option value="{$value}" {if="$continents.selected === $value"}selected{/if}>
+                      {$value}
+                    </option>
+                  {/if}
+                {/loop}
+              </select>
+              <select id="city" name="city">
+                {loop="$cities"}
+                  {if="$key !== 'selected'"}
+                    <option value="{$value.city}"
+                            {if="$cities.selected === $value.city"}selected{/if}
+                            data-continent="{$value.continent}">
+                      {$value.city}
+                    </option>
+                  {/if}
+                {/loop}
+              </select>
+	     </td>
+	</tr>
 
         <tr>
           <td valign="top"><b>Redirector</b></td>
