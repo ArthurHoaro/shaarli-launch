@@ -378,7 +378,7 @@ nav h2 {
 #content {
     margin: 0;
     margin-left: 340px;
-    width: 800px;
+    width: 100%;
 }
 
 /* ---------- SECTION ---------- */
