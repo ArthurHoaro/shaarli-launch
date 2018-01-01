@@ -81,7 +81,7 @@
         {/if}
         {if="isLoggedIn()"}
         <li class="">
-          <a class="icon-entry link-icon bright-icon" title="Logout" li="static-shaare" href="?do=addlink"></a>
+          <a class="icon-entry link-icon bright-icon" title="Shaare" li="static-shaare" href="?do=addlink"></a>
         </li>
         {/if}
         <li class="">
@@ -107,21 +107,20 @@
   {if="isLoggedIn() || !empty($plugins_header.launch_horizontal)"}
   <div id="adminmenu" class="center">
     {if="!empty($plugins_header.launch_horizontal)"}
-      <a href="?" title="Links"><i class="fa fa-home"></i>&#8239;Links</a> &middot;
+    <a href="?" title="Links"><button><i class="fa fa-home"></i>&#8239;Links</button></a> 
       {if="isLoggedIn()"}
-        <a title="Logout" href="?do=addlink"><i class="fa fa-pencil-square-o"></i>&#8239;Shaare</a> &middot;
+      <a title="Logout" href="?do=addlink"><button><i class="fa fa-pencil-square-o"></i>&#8239;Shaare</button></a> 
         {/if}
-        <a href="?do=tagcloud" title="Tag cloud"><i class="fa fa-tags"></i>&#8239;Tag Cloud</a> &middot;
-        <a href="?do=picwall" title="Picture wall"><i class="fa fa-picture-o"></i>&#8239;Picture Wall &middot;</a>
-        <a title="Daily" href="?do=daily"><i class="fa fa-newspaper-o"></i>&#8239;Daily &middot;</a>
+        <a href="?do=tagcloud" title="Tag cloud"><button><i class="fa fa-tags"></i>&#8239;Tag Cloud</button></a> 
+                <a href="?do=picwall" title="Picture wall"><button><i class="fa fa-picture-o"></i>&#8239;Picture</button></a>
+                <a title="Daily" href="?do=daily"><button><i class="fa fa-newspaper-o"></i>&#8239;Daily</button></a>
         {if="!isLoggedIn()"}
-        <a href="?do=login" title="Login"><i class="fa fa-sign-in"></i>&#8239;Login</a>
+        <a href="?do=login" title="Login"><button><i class="fa fa-sign-in"></i>&#8239;Login</button></a>
       {/if}
     {/if}
     {if="isLoggedIn()"}
-    <a href="?do=tools" title="Tools"><i class="fa fa-wrench"></i>&#8239;Tools</a>
-    &middot;
-    <a href="?do=logout" title="Logout"><i class="fa fa-sign-in"></i>&#8239;Logout</a>
+    <a href="?do=tools" title="Tools"><button><i class="fa fa-wrench"></i>&#8239;Tools</button></a>
+    <a href="?do=logout" title="Logout"><button><i class="fa fa-sign-in"></i>&#8239;Logout</button></a>
     {/if}
   </div>
   {/if}
